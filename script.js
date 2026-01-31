@@ -1,3 +1,8 @@
+const API_BASE = "https://video-downloader-api-production-2648.up.railway.app/download";
+
+let currentType = "";
+let currentUrl = "";
+
 function download(type) {
   const url = document.getElementById("url").value.trim();
   if (!url) {
@@ -5,23 +10,30 @@ function download(type) {
     return;
   }
 
-  const result = document.getElementById("result");
-  result.classList.remove("hidden");
+  currentType = type;
+  currentUrl = url;
 
-  // Placeholder API
-  let api = "https://video-downloader-api-production-2648.up.railway.app/download";
+  const previewBox = document.getElementById("preview");
+  const video = document.getElementById("videoPreview");
 
-  // Contoh query
-  let finalUrl = `${api}?type=${type}&url=${encodeURIComponent(url)}`;
+  // reset
+  video.src = "";
+  previewBox.classList.remove("hidden");
 
-  // Simulasi (nanti diganti fetch beneran)
-  setTimeout(() => {
-    result.innerHTML = `
-      <p>🚀 Backend belum dipasang</p>
-      <small>Frontend sudah siap</small>
+  // PREVIEW pakai link asli (aman & cepat)
+  if (type === "tiktok" || type === "ig") {
+    video.src = url;
+  } else {
+    previewBox.innerHTML = `
+      <p>Preview tidak tersedia untuk YouTube</p>
+      <button id="downloadBtn">⬇ Download</button>
     `;
-  }, 1500);
+  }
 
-  // Kalau backend sudah jadi:
-  // window.location.href = finalUrl;
+  document.getElementById("downloadBtn").onclick = startDownload;
+}
+
+function startDownload() {
+  const finalUrl = `${API_BASE}?type=${currentType}&url=${encodeURIComponent(currentUrl)}`;
+  window.location.href = finalUrl;
 }
