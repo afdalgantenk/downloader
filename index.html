@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Video Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>📥 Video Downloader</h1>
+  <p class="subtitle">YouTube • TikTok (No WM) • Instagram</p>
+
+  <input type="text" id="url" placeholder="Tempel link di sini...">
+
+  <div class="buttons">
+    <button onclick="download('mp3')">YouTube MP3</button>
+    <button onclick="download('mp4')">YouTube MP4</button>
+    <button onclick="download('tiktok')">TikTok No WM</button>
+    <button onclick="download('ig')">Instagram</button>
+  </div>
+
+  <div id="result" class="result hidden">
+    <div class="loader"></div>
+    <p>Menyiapkan file...</p>
+  </div>
+
+  <footer>
+    Created by <a href="https://github.com/USERNAME_KAMU" target="_blank">Mafdal</a>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
