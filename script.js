@@ -9,7 +9,7 @@ function download(type) {
   result.classList.remove("hidden");
 
   // Placeholder API
-  let api = "https://API-KAMU-NANTI/download";
+  let api = "https://video-downloader-api-production-2648.up.railway.app/download";
 
   // Contoh query
   let finalUrl = `${api}?type=${type}&url=${encodeURIComponent(url)}`;
